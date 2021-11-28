@@ -1,0 +1,5 @@
+- hosts: localhost
+  user: shupeluter
+  become: ture
+  roles:
+    01.settings4Java
