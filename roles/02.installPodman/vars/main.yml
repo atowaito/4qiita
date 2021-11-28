@@ -1,0 +1,7 @@
+---
+# vars file for roles/02.installPodman
+PODMAN_DEP_SETTING: "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/x{{ansible_distribution}}_{{ansible_distribution_version}}/ /"
+APT_SOURCE_FILE: /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+URL_APT_KEY: https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/x{{ansible_distribution}}_{{ansible_distribution_version}}/Release.key
+pkgs:
+  - podman

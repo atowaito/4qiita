@@ -1,5 +1,7 @@
 - hosts: localhost
   user: shupeluter
-  become: ture
+  become: true
+  gather_facts: true
   roles:
-    01.settings4Java
+#    - 01.settings4Java
+    - 02.installPodman

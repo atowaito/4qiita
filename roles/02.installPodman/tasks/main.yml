@@ -1,0 +1,23 @@
+---
+# tasks file for roles/02.installPodman
+- name: パッケージリストファイル作成
+  file:
+    path: "{{APT_SOURCE_FILE}}"
+    state: touch
+
+- name: パッケージリスト追加 
+  lineinfile:
+    path: "{{APT_SOURCE_FILE}}"
+    line: "{{PODMAN_DEP_SETTING}}"
+
+
+- name: apt-key追加
+  apt_key:
+    url: "{{URL_APT_KEY}}"
+
+- name: "パッケージインストール"
+  apt:
+    update_cache: true
+    state: present
+    pkg:
+      "{{pkgs}}"

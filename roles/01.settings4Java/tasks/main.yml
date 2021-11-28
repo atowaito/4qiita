@@ -1,0 +1,31 @@
+---
+# tasks file for roles/01.settings4Java
+- name: "パッケージインストール"
+  apt:
+    state: present
+    pkg:
+      "{{pkgs}}"
+
+- name: Unarchive a file that needs to be downloaded (added in 2.0)
+  unarchive:
+    src: "{{MAVEN_URL}}"
+    dest: "/opt"
+    remote_src: yes
+  
+
+- name: "環境変数の設定"
+  lineinfile:
+    backup: true
+    regexp: "^export {{item.name}}"
+    path: "/home/{{USER_NAME}}/.bashrc"
+    line: "export {{item.name}}={{item.value}}"
+  with_items: "{{ENVS}}"
+
+
+- name: "環境変数PATHの設定"
+  lineinfile:
+    backup: true
+    regexp: "^export PATH={{item.value}}:$PATH"
+    path: "/home/{{USER_NAME}}/.bashrc"
+    line: "export PATH={{item.value}}/bin:$PATH"
+  with_items: "{{ENVS}}"
