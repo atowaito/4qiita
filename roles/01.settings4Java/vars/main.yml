@@ -3,6 +3,7 @@
 pkgs:
   - openjdk-17-jdk
   - maven
+  - unzip
 JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
 M2_HOME: /opt/apache-maven-3.8.3
 
